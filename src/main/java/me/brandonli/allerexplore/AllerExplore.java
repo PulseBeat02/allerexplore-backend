@@ -35,8 +35,8 @@ public final class AllerExplore {
 
   public static void main(final String[] args) {
     Javalin.create(ServerUtils.createConfig())
+            .before(new RateLimiter())
       .before(new DatabaseStorage())
-      .before(new RateLimiter())
       .get("/barcode", new BarcodeEndpoint())
       .start(8080);
   }
