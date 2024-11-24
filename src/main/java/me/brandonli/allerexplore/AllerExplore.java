@@ -36,10 +36,10 @@ public final class AllerExplore {
 
   public static void main(final String[] args) {
     Javalin.create(ServerUtils.createConfig())
-            .before(new RateLimiter())
-            .before(new RequestTracker())
-            .before(new DatabaseStorage())
-            .get("/barcode", new BarcodeEndpoint())
-            .start(8080);
+      .before(new RateLimiter())
+      .before(new RequestTracker())
+      .before(new DatabaseStorage())
+      .get("/barcode", new BarcodeEndpoint())
+      .start(10000);
   }
 }
