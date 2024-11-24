@@ -29,6 +29,7 @@ import io.javalin.Javalin;
 import me.brandonli.allerexplore.endpoint.BarcodeEndpoint;
 import me.brandonli.allerexplore.endpoint.DatabaseStorage;
 import me.brandonli.allerexplore.endpoint.RateLimiter;
+import me.brandonli.allerexplore.endpoint.RequestTracker;
 import me.brandonli.allerexplore.utils.ServerUtils;
 
 public final class AllerExplore {
@@ -36,8 +37,9 @@ public final class AllerExplore {
   public static void main(final String[] args) {
     Javalin.create(ServerUtils.createConfig())
             .before(new RateLimiter())
-      .before(new DatabaseStorage())
-      .get("/barcode", new BarcodeEndpoint())
-      .start(8080);
+            .before(new RequestTracker())
+            .before(new DatabaseStorage())
+            .get("/barcode", new BarcodeEndpoint())
+            .start(8080);
   }
 }
