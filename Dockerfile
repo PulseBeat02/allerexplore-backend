@@ -1,7 +1,12 @@
-FROM ubuntu:latest AS build
-
-RUN apt-get update
-RUN apt-get install openjdk-21-jdk -y
+FROM gradle:latest AS BUILD
+WORKDIR /usr/app/
 COPY . .
+RUN gradle build
 
-ENTRYPOINT ["gradlew", "run"]
+FROM openjdk:latest
+ENV JAR_NAME=allerexplore-backend-v1.0.0-SNAPSHOT-all.jar
+ENV APP_HOME=/usr/app/
+WORKDIR $APP_HOME
+COPY --from=BUILD $APP_HOME .
+EXPOSE 8080
+ENTRYPOINT exec java -jar $APP_HOME/build/libs/$JAR_NAME
