@@ -1,0 +1,19 @@
+[versions]
+camel-barcode = "4.8.1"
+jsoup = "1.18.1"
+openfoodfacts-java-wrapper = "0.9.3"
+javalin = "6.3.0"
+caffeine = "3.1.8"
+sqlite-jdbc = "3.47.0.0"
+junit-bom = "5.10.0"
+junit-jupiter = "5.10.0"
+
+[libraries]
+camel-barcode = { module = "org.apache.camel:camel-barcode", version.ref = "camel-barcode" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
+openfoodfacts-java-wrapper = { module = "pl.coderion:openfoodfacts-java-wrapper", version.ref = "openfoodfacts-java-wrapper" }
+javalin = { module = "io.javalin:javalin", version.ref = "javalin" }
+caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite-jdbc" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
