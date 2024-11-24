@@ -1,4 +1,4 @@
-FROM gradle:latest AS BUILD
+FROM gradle:8.11.1-jdk21 AS BUILD
 WORKDIR /usr/app/
 COPY . .
 RUN gradle build
