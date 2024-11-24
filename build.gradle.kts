@@ -1,6 +1,7 @@
 plugins {
     java
     `java-library`
+    id("application")
     id("com.gradleup.shadow") version "8.3.5"
     id("org.checkerframework") version "0.6.46"
     id("com.diffplug.spotless") version "7.0.0.BETA4"
@@ -43,6 +44,10 @@ java {
 
 val windows = System.getProperty("os.name").lowercase().contains("windows")
 tasks {
+
+    application {
+        mainClass.set("me.brandonli.allerexplore.AllerExplore")
+    }
 
     withType<JavaCompile>().configureEach {
         options.compilerArgs.add("-parameters")
