@@ -23,21 +23,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-package me.brandonli.allerexplore;
+package me.brandonli.allerexplore.endpoint;
 
-import io.javalin.Javalin;
-import me.brandonli.allerexplore.endpoint.*;
-import me.brandonli.allerexplore.utils.ServerUtils;
+import io.javalin.http.Context;
+import io.javalin.http.Handler;
+import io.javalin.http.HttpStatus;
+import org.jetbrains.annotations.NotNull;
 
-public final class AllerExplore {
+public final class DefaultEndpoint implements Handler {
 
-  public static void main(final String[] args) {
-    Javalin.create(ServerUtils.createConfig())
-      .before(new RateLimiter())
-      .before(new RequestTracker())
-      .before(new DatabaseStorage())
-      .get("/", new DefaultEndpoint())
-      .get("/barcode", new BarcodeEndpoint())
-      .start(10000);
+  @Override
+  public void handle(final @NotNull Context ctx) {
+    ctx.status(HttpStatus.ACCEPTED);
+    ctx.result("Home Page");
   }
 }
