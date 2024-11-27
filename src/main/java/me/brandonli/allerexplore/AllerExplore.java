@@ -33,11 +33,12 @@ public final class AllerExplore {
 
   public static void main(final String[] args) {
     Javalin.create(ServerUtils.createConfig())
-      .before(new RateLimiter())
-      .before(new RequestTracker())
-      .before(new DatabaseStorage())
-      .get("/", new DefaultEndpoint())
-      .get("/barcode", new BarcodeEndpoint())
-      .start(10000);
+            .before(new RateLimiter())
+            .before(new RequestTracker())
+            .before(new DatabaseStorage())
+            .get("/", new DefaultEndpoint())
+            .get("/barcode", new BarcodeEndpoint())
+            .get("/product", new ProductEndpoint())
+            .start(10000);
   }
 }
